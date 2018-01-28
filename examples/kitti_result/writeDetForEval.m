@@ -5,8 +5,8 @@
 
 % clear and close everything
 clear all; close all;
-kitti_dir = '/your/KITTI/path/';
-addpath([kitti_dir 'devkit_object/devkit/matlab/']);
+kitti_dir = '/home/yunpeng/Documents/mscnn_mat/data/kitti/';
+addpath([kitti_dir 'devkit_object/matlab/']);
 
 data_set = 'val'; % or 'test'
 if (strcmp(data_set,'test')) 
@@ -14,12 +14,17 @@ if (strcmp(data_set,'test'))
 else
   is_gt_available = 1;
 end
-gt_dir = [kitti_dir 'data_object_label_2/training/label_2'];
+gt_dir = [kitti_dir 'training/label_2'];
 
 % get the list for evaluation
 list_dir = ['../../data/kitti/ImageSets/' data_set '.txt'];
 test_id = load(list_dir);
 nimages = length(test_id);
+
+
+% Get pedestrian path
+ped_dets_path = '../kitti_ped_cyc/detections/kitti_7s_576_x2_haze_val_ped.txt';
+
 
 % load detection results
 car_dets_path = '../kitti_car/detections/kitti_7s_576_2x_25k_val_car.txt';
@@ -28,12 +33,15 @@ if (exist(car_dets_path))
 else
   car_dets = zeros(0,6);
 end
-ped_dets_path = '../kitti_ped_cyc/detections/kitti_7s_576_2x_25k_val_ped.txt';
+% ped_dets_path = '../kitti_ped_cyc/detections/kitti_7s_576_x2_val_ped.txt';
+
 if (exist(ped_dets_path))
+  disp('pedestrian detection file found!');
   ped_dets = load(ped_dets_path);
 else
   ped_dets = zeros(0,6);
 end
+% cyc_dets_path = '../kitti_ped_cyc/detections/kitti_7s_576_x2_rain_val_cyc.txt';
 cyc_dets_path = '../kitti_ped_cyc/detections/kitti_7s_576_2x_25k_val_cyc.txt';
 if (exist(cyc_dets_path))
   cyc_dets = load(cyc_dets_path);
@@ -42,7 +50,8 @@ else
 end
 
 score_scale = 1000;
-comp_id = 'vgg_7s_576_2x_25k_val';
+% comp_id = 'vgg_7s_576_2x_25k_val';
+comp_id = 'new_haze_val';
 result_dir = [data_set '/' comp_id '/'];
 save_dir = [result_dir 'data/'];
 if (~exist(save_dir)), mkdir(save_dir); end

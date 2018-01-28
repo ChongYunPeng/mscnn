@@ -24,7 +24,7 @@ end
 net = caffe.Net(definition_file, binary_file, 'test');
 
 % set KITTI dataset directory
-root_dir = '/your/KITTI/path/';
+root_dir = '/home/yunpeng/Documents/mscnn/data/kitti/';
 image_dir = [root_dir 'testing/image_2/'];
 comp_id = 'kitti_8s_768_35k_test';
 image_list = dir([image_dir '*.png']); 

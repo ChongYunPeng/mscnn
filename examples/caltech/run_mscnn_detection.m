@@ -23,8 +23,8 @@ end
 % Initialize a network
 net = caffe.Net(definition_file, binary_file, 'test');
 
-% set KITTI dataset directory
-root_dir = '/your/Caltech/path/';
+% set CALTECH dataset directory
+root_dir = '/home/yunpeng/Documents/mscnn_mat/data/caltech/data/';
 image_dir = [root_dir 'test/images/'];
 comp_id = 'caltech_7s_720_20k_test';
 image_list = dir([image_dir '*.jpg']); 
@@ -55,7 +55,7 @@ obj_names = {'bg','ped'};
 final_detect_boxes = cell(nImg,num_cls); final_proposals = cell(nImg,1);
 proposal_thr = -10; usedtime=0; 
 
-show = 1; show_thr = 0.1;
+show = 0; show_thr = 0.1;
 if (show)
   fig=figure(1); set(fig,'Position',[50 100 640 480]);
   h.axes = axes('position',[0,0,1,1]);
@@ -155,6 +155,7 @@ for k = 1:nImg
 end
 
 for i=1:nImg
+  filename=image_list;
   for j=1:num_cls
     final_detect_boxes{i,j}=[ones(size(final_detect_boxes{i,j},1),1)*i final_detect_boxes{i,j}]; 
   end

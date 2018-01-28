@@ -1,0 +1,5 @@
+using mscnn-7s-576-2x for training
+
+Note:
+Must use sudo for running the train_mscnn.sh script
+
