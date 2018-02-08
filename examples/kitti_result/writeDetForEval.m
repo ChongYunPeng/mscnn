@@ -21,9 +21,10 @@ list_dir = ['../../data/kitti/ImageSets/' data_set '.txt'];
 test_id = load(list_dir);
 nimages = length(test_id);
 
+comp_id = 'train_half_rain_val';
 
 % Get pedestrian path
-ped_dets_path = '../kitti_ped_cyc/detections/kitti_7s_576_x2_haze_val_ped.txt';
+ped_dets_path = '../kitti_ped_cyc/detections/train_half_rain_val_ped.txt';
 
 
 % load detection results
@@ -51,7 +52,7 @@ end
 
 score_scale = 1000;
 % comp_id = 'vgg_7s_576_2x_25k_val';
-comp_id = 'new_haze_val';
+
 result_dir = [data_set '/' comp_id '/'];
 save_dir = [result_dir 'data/'];
 if (~exist(save_dir)), mkdir(save_dir); end

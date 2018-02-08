@@ -9,7 +9,7 @@ addpath('../../matlab/');
 addpath('../../utils/');
 
 % root_dir = 'mscnn-8s-768-trainval-pretrained/';
-root_dir = 'mscnn-haze/';
+root_dir = 'mscnn-7s-576-2x-rain/';
 
 % binary_file = [root_dir 'mscnn_kitti_trainval_2nd_iter_35000.caffemodel'];
 binary_file = [root_dir 'mscnn_kitti_train_2nd_iter_25000.caffemodel'];
@@ -34,8 +34,8 @@ root_dir = '/home/yunpeng/Documents/mscnn_mat/data/kitti/';
 % image_list = dir([image_dir '*.png']); 
 % nImg=length(image_list);
 
-image_dir = [root_dir 'training/image_2_haze_all/'];
-comp_id = 'kitti_7s_576_x2_haze_val';
+image_dir = [root_dir 'training/image_2_all_rain/'];
+comp_id = 'train_half_rain_val';
 % Goal: read content of file as string. Append said string with .png
 image_set = load('/home/yunpeng/Documents/mscnn_mat/data/kitti/ImageSets/val.txt');
 nImg=length(image_set);

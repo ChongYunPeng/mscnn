@@ -2,7 +2,7 @@ net: "trainval_2nd.prototxt"
 test_iter: 1000
 test_initialization: false
 test_interval: 1000
-base_lr: 0.0004
+base_lr: 0.00005
 lr_policy: "step"
 gamma: 0.1
 stepsize: 10000

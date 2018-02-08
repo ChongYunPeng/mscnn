@@ -1037,9 +1037,9 @@ layer {
   }
   proposal_target_param {
     cls_num: 3
-    batch_size: 128
+    batch_size: 64
     fg_fraction: 0.25
-    num_img_per_batch: 4
+    num_img_per_batch: 2
     fg_thr: 0.5
     bg_thr_hg: 0.45
     bg_thr_lw: 0.05
